@@ -427,6 +427,12 @@ MonoBehaviour:
   numberToSpawn: 5
   spawnPool:
   - {fileID: 2105363763}
+  a:
+  - {fileID: 2100000, guid: cda4f3d380555de45968fc49d937dd7b, type: 2}
+  - {fileID: 2100000, guid: 8f10d5c11617c34438f2afe37a9a2511, type: 2}
+  - {fileID: 2100000, guid: be8895b90af515c4fa8e34eb8bd6bf6f, type: 2}
+  - {fileID: 2100000, guid: cc5ee10e94ebfb94186296711963ab3b, type: 2}
+  - {fileID: 2100000, guid: 91e6d918526496649b41b4f9e73446e9, type: 2}
   quad: {fileID: 617171779}
   planet: {fileID: 2105363763}
   random_index: 0
