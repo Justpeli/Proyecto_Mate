@@ -17,14 +17,17 @@ public class Spawn : MonoBehaviour
     public Material blue;
     public Material red;
     public Material yellow;
+    public int[] arr1 = new int[5];
+    public int[] arr2 = new int[5];
     void Start()
     {
-        spawnObjects();
+        SpawnObjects();
         planet.gameObject.SetActive(false);
     }
 
-    public void spawnObjects()
+    private void SpawnObjects()
     {
+        arr1[0] = Random.Range(0, 4);
         destroyObjects();
         int randomItem = 0;
         GameObject toSpawn;
@@ -45,30 +48,38 @@ public class Spawn : MonoBehaviour
             pos = new Vector3(screenX, screenY, screenZ);
             Instantiate(toSpawn, pos, toSpawn.transform.rotation);
             
-            
-            /* x = Random.Range(1, 5);
-             switch (x)
-             {
-                 case 1:
-                     toSpawn.GetComponent<Renderer>().material = yellow;
-                     break;
-                 case 2:
-                     toSpawn.GetComponent<Renderer>().material = Meme;
-                     break;
-              
-                 case 3 :
-                     toSpawn.GetComponent<Renderer>().material = red;
-                     break;
-              
-                 case 4:
-                     toSpawn.GetComponent<Renderer>().material = blue;
-                     break;
-                 case 5:
-                     toSpawn.GetComponent<Renderer>().material = black;
-                     break;
-             }
- */
+           arr2[i] = Random.Range(0, 4);
+            if (arr1[i+1]!=arr2[i])
+            {
+                arr1[i] = arr2[i];
+            }
 
+            if (arr1[i]==1)
+            {
+                toSpawn.GetComponent<Renderer>().material = yellow;
+            }
+            else if (arr1[i]==2)
+            {
+                toSpawn.GetComponent<Renderer>().material = Meme;
+            }
+            else if (arr1[i]==0)
+            {
+                toSpawn.GetComponent<Renderer>().material = black;
+            }
+            else if (arr1[i]==3)
+            {
+                toSpawn.GetComponent<Renderer>().material = blue;
+            }
+            else if (arr1[i]==4)
+            {
+                toSpawn.GetComponent<Renderer>().material = red;
+            }
+            
+            
+
+
+
+               
         }
     }
     private void destroyObjects()
@@ -78,18 +89,21 @@ public class Spawn : MonoBehaviour
             Destroy(o);
         }
     }
+    
+    
 
-    /*void randomtexture()
-    {
-        GameObject mesh;
-        for (int i = 0; i < numberToSpawn; i++)
-        {
-            random_index = Random.Range(0, spawnPool.Count);
-            mesh = spawnPool[random_index];
+   // void randomtexture()
+  //  {
+     //   GameObject mesh;
+      
+     //   for (int i = 0; i < numberToSpawn; i++)
+    //    {
+           
+            
            
 
 
-        }
-    }
-*/
+      //  }
+  //  }
+
 }
