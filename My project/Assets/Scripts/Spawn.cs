@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Spawn : MonoBehaviour
 {
@@ -12,13 +13,15 @@ public class Spawn : MonoBehaviour
     public int random_index;
     private int randomname;
     public int x;
-    public Material Meme;
+    public Material white;
     public Material black;
     public Material blue;
     public Material red;
     public Material yellow;
-    public int[] arr1 = new int[5];
-    public int[] arr2 = new int[5];
+    public Material gray;
+    int[] num = {1,2,3,4,5};
+    public int n = 0;
+    public int[] num2 = {0,0,0,0,0,0};
     void Start()
     {
         SpawnObjects();
@@ -27,7 +30,7 @@ public class Spawn : MonoBehaviour
 
     private void SpawnObjects()
     {
-        arr1[0] = Random.Range(0, 4);
+       
         destroyObjects();
         int randomItem = 0;
         GameObject toSpawn;
@@ -35,7 +38,39 @@ public class Spawn : MonoBehaviour
 
         float screenX, screenY, screenZ;
         Vector3 pos;
-        Material random;
+
+
+
+        /*bool checkrep( int n, int[] num)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (n == num[i])
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }*/
+        for (int j = 0; j <= 5; j++)
+        {
+            n = Random.Range(0, 5);
+            //Debug.Log(n);
+            if (!num2.Contains(num[n]))
+            {
+                num2[j] = num[n];
+
+            }
+
+        }
+        foreach (int p in num2)
+        {
+            print(p);
+        }
+
+
+
 
         for (int i = 0; i < numberToSpawn; i++)
         {
@@ -46,40 +81,38 @@ public class Spawn : MonoBehaviour
             screenY = Random.Range(c.bounds.min.y, c.bounds.max.y);
             screenZ = Random.Range(c.bounds.min.z, c.bounds.max.z);
             pos = new Vector3(screenX, screenY, screenZ);
-            Instantiate(toSpawn, pos, toSpawn.transform.rotation);
-            
-           arr2[i] = Random.Range(0, 4);
-            if (arr1[i+1]!=arr2[i])
-            {
-                arr1[i] = arr2[i];
-            }
 
-            if (arr1[i]==1)
+            Instantiate(toSpawn, pos, toSpawn.transform.rotation);
+            if (num2[i] == 1)
             {
                 toSpawn.GetComponent<Renderer>().material = yellow;
             }
-            else if (arr1[i]==2)
+            else if (num2[i] == 2)
             {
-                toSpawn.GetComponent<Renderer>().material = Meme;
+                toSpawn.GetComponent<Renderer>().material = white;
             }
-            else if (arr1[i]==0)
+            else if (num2[i] == 5)
             {
                 toSpawn.GetComponent<Renderer>().material = black;
             }
-            else if (arr1[i]==3)
+            else if (num2[i] == 3)
             {
                 toSpawn.GetComponent<Renderer>().material = blue;
             }
-            else if (arr1[i]==4)
+            else if (num2[i] == 4)
             {
                 toSpawn.GetComponent<Renderer>().material = red;
             }
-            
-            
+            else if (num2[i] == 0)
+            {
+                toSpawn.GetComponent<Renderer>().material = gray;
+            }
 
 
 
-               
+
+
+
         }
     }
     private void destroyObjects()
@@ -89,21 +122,10 @@ public class Spawn : MonoBehaviour
             Destroy(o);
         }
     }
+
     
     
 
-   // void randomtexture()
-  //  {
-     //   GameObject mesh;
-      
-     //   for (int i = 0; i < numberToSpawn; i++)
-    //    {
-           
-            
-           
-
-
-      //  }
-  //  }
+  
 
 }
