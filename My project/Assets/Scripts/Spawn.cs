@@ -39,24 +39,10 @@ public class Spawn : MonoBehaviour
         float screenX, screenY, screenZ;
         Vector3 pos;
 
-
-
-        /*bool checkrep( int n, int[] num)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                if (n == num[i])
-                {
-                    return true;
-                }
-
-                return false;
-            }
-        }*/
         for (int j = 0; j <= 5; j++)
         {
             n = Random.Range(0, 5);
-            //Debug.Log(n);
+
             if (!num2.Contains(num[n]))
             {
                 num2[j] = num[n];
@@ -83,15 +69,15 @@ public class Spawn : MonoBehaviour
             pos = new Vector3(screenX, screenY, screenZ);
 
             Instantiate(toSpawn, pos, toSpawn.transform.rotation);
-            if (num2[i] == 1)
+            if (num2[i] == 0)
             {
                 toSpawn.GetComponent<Renderer>().material = yellow;
             }
-            else if (num2[i] == 2)
+            else if (num2[i] == 1)
             {
                 toSpawn.GetComponent<Renderer>().material = white;
             }
-            else if (num2[i] == 5)
+            else if (num2[i] == 2)
             {
                 toSpawn.GetComponent<Renderer>().material = black;
             }
@@ -103,7 +89,7 @@ public class Spawn : MonoBehaviour
             {
                 toSpawn.GetComponent<Renderer>().material = red;
             }
-            else if (num2[i] == 0)
+            else if (num2[i] == 5)
             {
                 toSpawn.GetComponent<Renderer>().material = gray;
             }
